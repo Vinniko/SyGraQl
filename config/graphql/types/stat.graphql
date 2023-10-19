@@ -1,0 +1,5 @@
+type Stat {
+    complexityIndex: Float!
+    standardDeviation: Float!
+    averageValue : Float!
+}

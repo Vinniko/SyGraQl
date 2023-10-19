@@ -22,3 +22,11 @@ services:
 
     # add more service definitions when explicit configuration is needed
     # please note that last definitions always *replace* previous ones
+
+    App\Resolver\CustomResolverMap:
+        tags:
+            - { name: overblog_graphql.resolver_map, schema: default }
+
+    App\EventListener\ErrorHandler:
+        tags:
+            - { name: kernel.event_listener, event: graphql.post_executor, method: onPostExecutor }

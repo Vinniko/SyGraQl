@@ -1,0 +1,20 @@
+enum Type {
+  FIRST
+  SECOND
+}
+
+type Tag {
+    id: ID
+    name: String!
+    color: String!
+    score: Int!
+    type: Type
+}
+
+input UpdateTag {
+    id: ID
+    name: String!
+    color: String!
+    score: Int!
+    type: Type
+}

@@ -1,0 +1,3 @@
+type RootQuery {
+    getstat(start_date: DateTime, end_date: DateTime, type: Type): Stat!
+}
