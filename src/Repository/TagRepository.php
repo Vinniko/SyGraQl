@@ -26,27 +26,23 @@ class TagRepository extends ServiceEntityRepository
         $qb = $this->createQueryBuilder('t')
             ->select('t.score');
 
-        if ($startDate && $endDate) {
+        if ($startDate) {
             $qb
-                ->where('t.updated_at >= :startDate')
+                ->andWhere('t.updated_at >= :startDate')
+                ->setParameter('startDate', $startDate)
+            ;
+        }
+
+        if ($endDate) {
+            $qb
                 ->andWhere('t.updated_at <= :endDate')
-                ->setParameter('startDate', $startDate)
-                ->setParameter('endDate', $endDate)
-            ;
-        } elseif ($startDate) {
-            $qb
-                ->where('t.updated_at >= :startDate')
-                ->setParameter('startDate', $startDate)
-            ;
-        } elseif ($endDate) {
-            $qb
-                ->where('t.updated_at <= :endDate')
                 ->setParameter('startDate', $endDate)
             ;
         }
 
         if ($type) {
-            $qb->andWhere('t.type = :type')
+            $qb
+                ->andWhere('t.type = :type')
                 ->setParameter('type', $type)
             ;
         }
